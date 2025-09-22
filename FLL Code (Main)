@@ -129,8 +129,8 @@ while numero == 1:
         if lancamento == 1:
             
             garraD(800)
-            andar(55)
-            garraD(970, 4000, True)
+            andar(57)
+            garraD(1000, 4000, True)
             andar(-15)
             curva(-90)
             andar(5.4)
@@ -150,20 +150,22 @@ while numero == 1:
 
             andar(62)
             garraE(400, 4000, True)
-            curva(-90)
-            curva(-30)
+            curva(-120)
             curva(60)
             curva(-30)
             andar(-10)
-            andar(10)
+            andar(11)
             garraE(800)
             andar(-10)
             curva(90)
+            andar(-7)
+            curva(-38)
+            garraD(1010, 4000, True)
+            andar(33)
+            garraD(600, 4000, True)
             andar(7)
-            curva(-55)
-            garraD(1000, 4000, True)
-            andar(23)
-            garraD(450)
+            garraD(750)
+            andar(-20)
 
         if lancamento == 3:
 
