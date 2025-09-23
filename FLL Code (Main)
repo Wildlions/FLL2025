@@ -55,6 +55,16 @@ def arco(raio, graus, velocidade = 300):
 
     mover.settings(velocidade, 400, 400, 400)
     mover.curve(raio, graus)
+
+def ajusteGarra(lado, velocidade, torque=50):
+
+    if lado == "E":
+
+        garra_esq.run_until_stalled(velocidade * -1, Stop.COAST, torque)
+
+    if lado == "D":
+
+        garra_dir.run_until_stalled(velocidade * -1, Stop.COAST, torque)
     
     
 def esperar(tempo):
@@ -158,27 +168,35 @@ while numero == 1:
             garraE(800)
             andar(-10)
             curva(90)
-            andar(-7)
+            andar(-9)
             curva(-38)
             garraD(1010, 4000, True)
-            andar(33)
+            andar(25)
             garraD(600, 4000, True)
+            curva(-15)
+            andar(5)
+            curva(15)
             andar(7)
-            garraD(750)
+            andar(-5)
+            garraD(1000)
             andar(-20)
+            curva(40)
+            andar(-65)
 
         if lancamento == 3:
 
-            garraD(1350, 4000, True)
-            andar(-15)
-            parar()
+            ajusteGarra("E", 4000)
+            garraE(300)
+            andar(60)
+            arco(100, 90)
+            arco(100, -90)
+            andar(10)
+            garraE(1000)
 
         if lancamento == 4:
 
-            curva(-10)
-            andar(-30)
-            curva(-65)
-            andar(-50)
+            wait(1)
+
 
         if lancamento == 5:
 
