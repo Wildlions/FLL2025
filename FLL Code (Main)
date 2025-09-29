@@ -2,7 +2,7 @@ from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
+from pybricks.tools import wait, StopWatch, multitask, run_task
 from umath import sin, cos, tan, pi
 
 tempo = StopWatch()   
@@ -56,7 +56,7 @@ def arco(raio, graus, velocidade = 300):
     mover.settings(velocidade, 400, 400, 400)
     mover.curve(raio, graus)
 
-def ajusteGarra(lado, velocidade, torque=50):
+def ajusteGarra(lado, velocidade=4000, torque=50):
 
     if lado == "E":
 
@@ -68,6 +68,7 @@ def ajusteGarra(lado, velocidade, torque=50):
     
     
 def esperar(tempo):
+    
     mover.stop()
     wait(tempo*1000)
     mover.stop()
@@ -182,21 +183,62 @@ while numero == 1:
             andar(-20)
             curva(40)
             andar(-65)
+            parar()
 
         if lancamento == 3:
 
-            ajusteGarra("E", 4000)
-            garraE(300)
-            andar(60)
-            arco(100, 90)
-            arco(100, -90)
-            andar(10)
-            garraE(1000)
+            ajusteGarra("E", 2500, 40)
+            garraE(900)
+            andar(85)
+            curva(87)
+            andar(-4)
+            ajusteGarra("E", 3500, 40)
+            garraE(465, 3000)
+            estacionarB(200)
+            andar(7)
+            garraE(420, 4000)
+            garraE(250, 4000, True)
+            andar(-20)
+            garraE(700)
+            curva(-90)
+            andar(-85)
+            parar()
 
         if lancamento == 4:
 
-            wait(1)
-
+            ajusteGarra("E")
+            garraE(900)
+            andar(57)
+            andar(-2)
+            garraD(900)
+            curva(90)
+            andar(-7)
+            curva(-90)
+            andar(12)
+            garraE(700)
+            ajusteGarra("D", 5000, 50)
+            arco(145, 155)
+            curva(-65)
+            andar(6)
+            curva(-90)
+            andar(-2)
+            garraD(1200, 100000)
+            curva(75)
+            andar(20)
+            arco(200, 105)
+            garraD(1000)
+            curva(-65)
+            andar(3)
+            garraE(950, 4000, True)
+            garraE(700)
+            andar(-3)
+            curva(162.7)
+            andar(4.5)
+            garraE(1100, 4000, True)
+            curva(-2)
+            andar(2)
+            garraE(550, 4000, True)
+            parar()
 
         if lancamento == 5:
 
