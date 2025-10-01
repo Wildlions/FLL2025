@@ -105,9 +105,9 @@ while numero == 1:
     
     if Button.LEFT in botao: 
 
-        if lancamento == 0:
+        if lancamento == -99:
 
-            lancamamento = 0
+            lancamamento = -99
             hub.display.number(lancamento)
 
         else:
@@ -131,6 +131,15 @@ while numero == 1:
     if Button.CENTER in botao:
         
         wait(300)
+
+        if lancamento == -1:
+
+            ajusteGarra("E")
+            garraE(700)
+            andar(50)
+            curva(45)
+            andar(-30)
+            parar()
 
         if lancamento == 0:
             
@@ -219,30 +228,31 @@ while numero == 1:
             garraE(700)
             ajusteGarra("D", 5000, 50)
             arco(145, 150)
-            curva(-60)
+            curva(-50)
             andar(5)
             curva(-90)
             andar(-2)
             garraD(1200, 100000)
             curva(75)
             andar(20)
-            arco(200, 105)
+            arco(300, 70)
             garraD(1000)
-            curva(-72)
+            curva(-50)
             andar(3)
             garraE(950, 4000, True)
             garraE(700)
             andar(-3)
-            curva(72)
+            curva(75)
             andar(14)
             curva(90)
             ajusteGarra("E", 4000, 50)
-            garraE(450)
-            arco(150, 45)
+            garraE(350)
+            arco(170, 60)
             garraE(1000, 100000)
-            arco(-50, 15)
+            esperar(0.75)
+            curva(20)
+            andar(-15)
+            curva(-45)
+            andar(-90)
             parar()
-
-        if lancamento == 5:
-
-            parar()
+ 
