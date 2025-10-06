@@ -133,13 +133,14 @@ while numero == 1:
         wait(300)
 
         if lancamento == -1:
-
+            
             ajusteGarra("E")
             garraE(700)
-            andar(50)
+            andar(60)
             curva(45)
-            andar(-30)
-            parar()
+            andar(-35)
+            andar(25)
+            arco(110, -270)
 
         if lancamento == 0:
             
@@ -255,4 +256,7 @@ while numero == 1:
             curva(-45)
             andar(-90)
             parar()
- 
+    
+        if lancamento == 5:
+
+            parar() 
