@@ -137,15 +137,19 @@ while numero == 1:
             ajusteGarra("E")
             garraE(700)
             ajusteGarra("D")
-            garraD(700)
+            garraD(740)
             andar(61)
             curva(45)
             andar(-35)
-            andar(25)
-            arco(65, -270)
+            andar(27)
+            arco(79, -273)
+            andar(-35)
+            garraD(700)
+            curva(-60)
+            andar(-4)
+            curva(60)
+            andar(50)
             andar(-30)
-            garraD(300)
-            andar(20)
 
         if lancamento == 0:
             
@@ -197,7 +201,7 @@ while numero == 1:
             garraD(1000)
             andar(-20)
             curva(40)
-            andar(-65)
+            andar(-65)#fez a missão 2
             parar()
 
         if lancamento == 3:
