@@ -98,6 +98,23 @@ def estacionarB(velocidade):
             parar()
             loop = False
 
+async def estacionarE(velocidade, torque=50):
+
+    await esquerdo.run_until_stalled(velocidade, Stop.COAST, torque)
+
+async def estacionarD(velocidade, torque=50):
+
+    await direito.run_until_stalled(velocidade, Stop.COAST, torque)
+
+async def est(velocidade, torque=50):
+
+    await multitask(estacionarE(velocidade, torque), estacionarD(velocidade, torque))
+
+def estacionar(velocidade, torque=31):
+
+    run_task(est(velocidade, torque))
+    mover.stop()
+
 while numero == 1:
 
     hub.display.number(lancamento)
@@ -240,7 +257,7 @@ while numero == 1:
             curva(-90)
             andar(12)
             garraE(700)
-            ajusteGarra("D", 5000, 50)
+            ajusteGarra("D", 5000, 45)
             arco(145, 150)
             curva(-50)
             andar(5)
@@ -264,12 +281,16 @@ while numero == 1:
             arco(170, 60)
             garraE(1000, 100000)
             esperar(0.75)
-            curva(20)
+            curva(25)
             andar(-15)
-            curva(-45)
+            curva(-50)
             andar(-90)
             parar()
     
         if lancamento == 5:
-            garraD( 500, 2000, True)
-            parar() 
+            """
+            garraD(500, 2000, True)
+            parar()
+            """
+            estacionar(-400)
+            andar(10)
