@@ -113,7 +113,7 @@ async def est(velocidade, torque=50):
 def estacionar(velocidade, torque=31):
 
     run_task(est(velocidade, torque))
-    mover.stop()
+    parar()
 
 while numero == 1:
 
@@ -257,7 +257,7 @@ while numero == 1:
             curva(-90)
             andar(12)
             garraE(700)
-            ajusteGarra("D", 5000, 45)
+            ajusteGarra("D", 5000, 40)
             arco(145, 150)
             curva(-50)
             andar(5)
@@ -266,31 +266,28 @@ while numero == 1:
             garraD(1200, 100000)
             curva(75)
             andar(20)
-            arco(300, 70)
+            arco(300, 65)
             garraD(1000)
-            curva(-50)
-            andar(3)
+            curva(-40)
+            estacionar(300)
             garraE(950, 4000, True)
             garraE(700)
             andar(-3)
-            curva(75)
-            andar(14)
+            curva(65)
+            andar(15)
             curva(90)
             ajusteGarra("E", 4000, 50)
             garraE(350)
-            arco(170, 60)
-            garraE(1000, 100000)
+            arco(176, 53.7)
+            garraE(950, 100000)
             esperar(0.75)
-            curva(25)
+            curva(35)
             andar(-15)
-            curva(-50)
+            curva(-60)
             andar(-90)
             parar()
     
         if lancamento == 5:
-            """
+            
             garraD(500, 2000, True)
             parar()
-            """
-            estacionar(-400)
-            andar(10)
