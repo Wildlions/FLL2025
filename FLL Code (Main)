@@ -22,6 +22,8 @@ sensoresq.lights.on(100)
 sensordir.lights.on(100)
 whiteLow = 95
 whiteHigh = 100
+blacklow = 10
+blackhigh = 20
 
 def lerE():
     
@@ -97,6 +99,25 @@ def estacionarB(velocidade):
 
             parar()
             loop = False
+
+def estacionarP(velocidade):
+
+    loop = True
+
+    while loop == True:
+
+        refE = lerE()
+        refD = lerD()
+        mover.drive(velocidade, 0)
+
+        if refD >= blacklow and refD <= blackhigh and refE >= blacklow and refE <= blackhigh:
+
+            mover.stop()
+            loop = False
+
+        else:
+
+            wait(1)
 
 async def estacionarE(velocidade, torque=50):
 
@@ -246,28 +267,30 @@ while numero == 1:
             parar()
 
         if lancamento == 4:
-
+            
             ajusteGarra("E")
             garraE(900)
             andar(57)
-            andar(-2)
+            andar(-3)
             garraD(900)
+            andar(1)
             curva(90)
             andar(-7)
             curva(-90)
             andar(12)
             garraE(700)
             ajusteGarra("D", 5000, 40)
+            garraD(450)
             arco(145, 150)
-            curva(-50)
+            curva(-60)
             andar(5)
-            curva(-90)
+            curva(-80)
             andar(-2)
             garraD(1200, 100000)
             curva(75)
             andar(20)
             arco(300, 65)
-            garraD(1000)
+            ajusteGarra("D", -4000, 35)
             curva(-40)
             estacionar(300)
             garraE(950, 4000, True)
@@ -282,9 +305,20 @@ while numero == 1:
             garraE(950, 100000)
             esperar(0.75)
             curva(35)
-            andar(-15)
-            curva(-60)
-            andar(-90)
+            andar(-4)
+            arco(-173, -16)
+            estacionarP(-200)
+            curva(65)
+            andar(55)
+            curva(-45)
+            andar(30)
+            curva(38)
+            arco(-450, 38)
+            andar(8)
+            curva(25)
+            ajusteGarra("D", 4000, 45)
+            garraD(650)
+            arco(180, -270)
             parar()
     
         if lancamento == 5:
