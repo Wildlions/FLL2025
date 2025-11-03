@@ -132,7 +132,7 @@ def estacionarT(velocidade):
         refE = lerE()
         refD = lerD()
         erro = refD - refE
-        derivada = erro - (erro_ant * 0.7)
+        derivada = erro - (erro_ant * 0.3)
         taxaCurva = (kP * erro) + (kD * derivada)
         erro_ant = erro
 
@@ -163,6 +163,10 @@ def estacionar(velocidade, torque=31):
 
     run_task(est(velocidade, torque))
     parar()
+
+async def set_timeout(tempo):
+
+    StopWatch.reset()
 
 while numero == 1:
 
@@ -315,7 +319,7 @@ while numero == 1:
             curva(-74)
             andar(-2.3)
             garraD(1300, 100000)
-            wait(300)
+            wait(450)
             curva(75)
             andar(20)
             arco(300, 65)
@@ -329,27 +333,34 @@ while numero == 1:
             andar(15)
             curva(90)
             ajusteGarra("E", 4000, 50)
-            garraE(350)
-            arco(177, 53.7)
-            garraE(950, 100000)
-            esperar(0.7)
-            arco(-9, -35)
-            andar(-4)
-            arco(-17, 168)
+            garraE(420)
+            arco(179, 53.7, 230)
+            garraE(850, 100000)
+            esperar(0.6)
+            arco(-7, -45)
+            andar(-10)
+            curva(-70)
+            andar(-85)
+            '''
+            arco(-27, 166)
             estacionarT(70)
             curva(-88)
-            andar(28.5)
+            andar(29)
             curva(-23)
             andar(35)
             curva(27)
-            arco(-283, 27)
+            arco(-285, 27)
             curva(-13)
             andar(-5)
             andar(13)
-            curva(25)
+            curva(-20)
             ajusteGarra("D", 4000, 45)
             garraD(650)
-            arco(180, -270)
+            andar(8)
+            arco(176, -160)
+            curva(10)
+            andar(-15)
+            '''
             parar()
     
         if lancamento == 5:
