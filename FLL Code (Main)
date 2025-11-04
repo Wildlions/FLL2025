@@ -216,7 +216,7 @@ while numero == 1:
             andar(-35)
             garraD(700)
             curva(-60)
-            andar(-4.67)
+            andar(-2.67)
             curva(60)
             andar(50)
             andar(-15)
