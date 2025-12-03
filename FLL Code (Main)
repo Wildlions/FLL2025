@@ -7,11 +7,12 @@ from umath import sin, cos, tan, pi
 
 tempo = StopWatch()   
 hub = PrimeHub()
-direito = Motor(Port.C)
-esquerdo = Motor(Port.B, Direction.COUNTERCLOCKWISE)
+direito = Motor(Port.D)
+esquerdo = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 garra_esq = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 garra_dir = Motor(Port.E)
 mover = DriveBase(esquerdo, direito, 55, 80)
+mover.settings(400, 250)
 mover.use_gyro(True)
 numero = 1
 lancamento = 1
@@ -33,20 +34,24 @@ def lerD():
     return(sensordir.reflection())
 
 def andar(distancia, velocidade = 400):
-    mover.settings(velocidade, 900, 900, 900)
+
+    mover.settings(velocidade, 650, 900, 900)
     mover.straight(distancia*10)
 
-def curva(graus, velocidade = 200):
+def curva(graus, esperar=True, velocidade = 200):
+
     mover.settings(50, 600, 130, velocidade)
-    mover.turn(graus, Stop.HOLD, True)
+    mover.turn(graus, Stop.HOLD, esperar)
     
 def garraD(tempo, velocidade=4000, reverse=False):
+
     velocidadeR = velocidade
     if reverse == True:
         velocidadeR = velocidade * -1
     garra_dir.run_time(velocidadeR, tempo)
 
 def garraE(tempo, velocidade=4000, reverse=False):
+
     velocidadeR = velocidade
     if reverse == True:
         velocidadeR = velocidade * -1
@@ -246,6 +251,7 @@ while numero == 1:
             
             print("Bateria: ", hub.battery.voltage())
             mover.drive(1000, 0)
+            
 
         if lancamento == 1:
             
@@ -254,17 +260,13 @@ while numero == 1:
             garraD(1000, 4000, True)
             andar(-14, 900)
             garraD(1000, 4000)
-            curva(-90)
-            andar(4.94)
-            curva(-81.47)
-            andar(-45, 900)
-            andar(23, 900)
-            curva(-90)
-            andar(12, 900)
-            curva(-92)
-            andar(5)
+            curva(2)
+            andar(30.4, 300)
+            curva(33, False)
+            wait(4000)
+            mover.stop()
             garraE(900, 4000, True)
-            andar(-55, 900)
+            arco(-800, 55)
             parar()
 
         if lancamento == 2:
@@ -274,13 +276,13 @@ while numero == 1:
             curva(-120)
             curva(60)
             arco(-63, 25)
-            andar(-8.6, 900)
-            andar(11.3, 900)
+            andar(-8.3, 900)
+            andar(11.36, 900)
             garraE(800) #Fez a missão 1 
             andar(-10, 900)
             curva(85)
-            andar(-5.35, 900)
-            curva(-38.64)
+            andar(-5.47, 900)
+            curva(-41.5)
             ajusteGarra("D", 10000, 33)
             garraD(500, 4000)
             andar(25, 900)
@@ -297,16 +299,17 @@ while numero == 1:
             parar()
 
         if lancamento == 3:
-            
+            '''
             andar(47, 900)
             andar(-58, 900)
             parar()
-            
+            '''
+            curva(90)
         if lancamento == 4:
             
-            ajusteGarra("E", 10000)
+            ajusteGarra("E", 10000, 30)
             garraE(900)
-            andar(57, 900)
+            andar(57, 600)
             andar(-3, 450)
             garraD(900)
             andar(1)
@@ -315,28 +318,28 @@ while numero == 1:
             curva(-90)
             andar(12, 650)
             garraE(700)
-            ajusteGarra("D", 10000, 40)
+            ajusteGarra("D", 10000, 30)
             garraD(420)
-            arco(149, 150)
-            curva(-66)
-            andar(5, 500)
-            curva(-74)
-            andar(-3.7)
+            arco(150, 150)
+            curva(-62)
+            andar(4.2, 500)
+            curva(-77)
+            andar(-3.86)
             garraD(1300, 100000)
-            wait(450)
+            wait(550)
             curva(75)
             andar(20, 900)
-            arco(300, 65)
-            ajusteGarra("D", -10000, 35)
-            curva(-40)
-            estacionar(350)
+            arco(315, 65)
+            ajusteGarra("D", -10000, 30)
+            curva(-27)
+            estacionar(400)
             garraE(950, 4000, True)
             garraE(700)
             andar(-3, 450)
             curva(60)
             andar(21, 900)
             curva(90)
-            ajusteGarra("E", 10000, 50)
+            ajusteGarra("E", 10000, 45)
             garraE(415)
             arco(164, 55.7, 230)
             andar(4.75, 450)
@@ -346,8 +349,8 @@ while numero == 1:
             wait(2500)
             mover.stop()
             andar(-24.5, 900)
-            curva(-65)
-            andar(-93, 900)
+            curva(90)
+            arco(1000, 50)
             '''
             arco(-27, 166)
             estacionarT(70)
